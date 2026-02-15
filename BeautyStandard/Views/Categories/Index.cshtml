@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BeautyStandard.Models.Category>
+
+@{
+    ViewData["Title"] = "Категории товаров";
+}
+
+<h1>Категории товаров</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        ➕ Добавить новую категорию
+    </a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Название категории</th>
+            <th>Количество товаров</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>
+                    @if (item.Products != null)
+                    {
+                        @item.Products.Count
+                    }
+                    else
+                    {
+                                <span>0</span>
+                    }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">📄</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">✏️</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">🗑️</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

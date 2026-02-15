@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Добро пожаловать в Beauty Standard</h1>
+    <p class="lead">Салон красоты премиум-класса</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="bi bi-people" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Клиенты</h5>
+                <p class="card-text">Управление базой клиентов салона</p>
+                <a asp-controller="Clients" asp-action="Index" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="bi bi-tags" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Категории</h5>
+                <p class="card-text">Управление категориями товаров</p>
+                <a asp-controller="Categories" asp-action="Index" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="bi bi-box" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Товары</h5>
+                <p class="card-text">Учет товаров салона красоты</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+</div>

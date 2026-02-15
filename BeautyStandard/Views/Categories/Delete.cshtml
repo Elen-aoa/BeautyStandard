@@ -1,0 +1,43 @@
+﻿@model BeautyStandard.Models.Category
+
+@{
+    ViewData["Title"] = "Удаление категории";
+}
+
+<h1>Удаление категории</h1>
+
+<div class="alert alert-danger">
+    <h3>Вы уверены, что хотите удалить эту категорию?</h3>
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    @if (Model.Products != null && Model.Products.Any())
+    {
+            <div class="alert alert-warning">
+                <strong>Внимание!</strong> В этой категории есть товары. Удаление категории невозможно, пока в ней есть товары.
+            </div>
+    }
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        @if (Model.Products == null || !Model.Products.Any())
+        {
+                <input type="submit" value="Удалить" class="btn btn-danger" />
+        }
+        else
+        {
+                <button type="button" class="btn btn-danger" disabled>Удалить (есть товары)</button>
+        }
+        <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+    </form>
+</div>

@@ -1,0 +1,51 @@
+﻿@model BeautyStandard.Models.Category
+
+@{
+    ViewData["Title"] = "Детали категории";
+}
+
+<h1>Детали категории</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    @if (Model.Products != null && Model.Products.Any())
+    {
+            <h4>Товары в этой категории</h4>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Цена</th>
+                        <th>Остаток</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var product in Model.Products)
+                {
+                            <tr>
+                                <td>@product.Name</td>
+                                <td>@product.Price.ToString("C")</td>
+                                <td>@product.Stock</td>
+                            </tr>
+                }
+                </tbody>
+            </table>
+    }
+    else
+    {
+            <p>В этой категории пока нет товаров.</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Редактировать</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+</div>
